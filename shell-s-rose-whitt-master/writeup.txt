@@ -1,0 +1,41 @@
+We are using 1 slip day on this assignment.
+
+Madison Roy and Rose Whitt, mmr11 and rew9
+COMP 321 Project 4: Unix Shell
+3/10/2022
+
+---(Do not write lines of text that exceed the width of this line.)------------
+
+DESIGN DESCRIPTION
+
+We based our design choices primarily on the guidance of the textbook assigned
+reading. We followed those instructions for all of our individual tasks within
+functions, such as masking, cases for if statements, and general structure.
+Notably, for initpath, we decided to implement the function by using a linked
+list. We felt more comfortable with linked list from our experience in prior
+homework assignments than we did with using malloc to create an array, so we
+chose to store the directories as a linked list. Additionally, we chose to
+allocate work to our waitfg function. We did this by using a loop and the 
+sigsuspend function to test whether the function is still running in the 
+foreground. We believe that this design choice simplified our handler functions
+and led to a more streamlined algorithm for reaping the zombie children.
+
+TESTING STRATEGY
+
+We started by testing our shell with all of the given trace files. We selected
+these inputs because we believe they effectively covered many of the first 
+cases that would case errors in our implementation. These cases helped us find
+and resolve bugs in our error handling implementations. We then tested our
+shell with myspin, myspilt, and mystop to ensure that our implementation
+handled errors properly. We tested it with a variety of foreground and
+background jobs running simultaneously so that we could determine where there
+were bugs in our error handling implementation. Finally, we tested our shell
+with various inputs that may or may not be recognized as a process or a job.
+We ensured that our code recognized "%" for starting jobs and numbers for 
+starting processes. We also made sure that it would recognize when an input
+was not a job ID or PID. We selected these inputs to insure that we covered
+a variety of circumstances in which our implementation might fail: whether
+due to error handling or job/process production and handling. We believe
+this testing strategy is sufficient because it covers all of the possible
+cases in which the implementation could fail, have a bug, or behave not as 
+intended.
